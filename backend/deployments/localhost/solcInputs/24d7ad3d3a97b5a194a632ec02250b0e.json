@@ -1,0 +1,41 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Factory.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"./Greeter.sol\";\n\ncontract Factory {\n\n    address public immutable logger;\n\n    address public owner;\n\n    uint256 public deployFee;\n\n    // uint256 public treasury;\n\n    string private _initialGreet;\n\n    mapping(address => address[]) private _contracts;\n\n    event NewGreeter(address deployer, address newContract);\n\n    modifier onlyOwner {\n        require(msg.sender == owner, \"only owner\");\n        _;\n    }\n\n    constructor(address _logger, uint256 deployFee_) { \n        logger = _logger;\n        owner = msg.sender;\n        deployFee = deployFee_;\n    }\n\n    function deployGreeter() external payable {\n        require(msg.value >= deployFee, \"must pay deploy fee\");\n        Greeter newGreeter = new Greeter(logger, _initialGreet);\n        _contracts[msg.sender].push(address(newGreeter));\n        emit NewGreeter(msg.sender, address(newGreeter));\n    }\n\n    function getGreeters(address deployer) external view returns(address[] memory ) {\n        return _contracts[deployer];\n    }\n\n    function setInitialGreet(string memory greet) external onlyOwner {\n        _initialGreet = greet;\n    }\n\n    function withdraw() external onlyOwner {\n        (bool success, ) = payable(msg.sender).call{value: address(this).balance}(\"\");\n        require(success, \"withdrawal failed\");\n    }\n}"
+    },
+    "contracts/Greeter.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport './Logger.sol';\n\ncontract Greeter {\n\n    string private _greet;\n\n    constructor(address logger_, string memory initialGreet) {\n        // logger = logger_;\n        Logger _logger = Logger(logger_);\n        _logger.emitDeploy(msg.sender, address(this));\n        _greet = initialGreet;\n    }\n\n    function setGreet(string memory greet) external {\n        _greet = greet;\n    }\n\n    function getGreet() external view returns(string memory) {\n        return _greet;\n    }\n\n}"
+    },
+    "contracts/Logger.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract Logger {\n\n    event Deployment(address indexed deployer, address greeter);\n\n    constructor() {}\n\n    function emitDeploy(address deployer, address greeter) external {\n        emit Deployment(deployer, greeter);\n    }\n    \n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
