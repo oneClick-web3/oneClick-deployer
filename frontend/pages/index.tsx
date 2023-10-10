@@ -18,6 +18,7 @@ export default function Home() {
 
   return (
     <main className='h-screen flex flex-col items-center justify-center bg-white dark:bg-black'>
+      <div className='border-4 border-green-400 '>
       <div className='flex grid grid-rows-4 justify-center border-4 border-black rounded block p-6 bg-white dark:bg-black dark:border-white'>
         <div className='row-span-1 border-black dark:border-white border-b-4 border-dashed'>
           <h1 className='flex justify-center text-3xl font-mono font-bold tracking-tight text-gray-900 dark:text-white'>
@@ -46,6 +47,7 @@ export default function Home() {
         </div>
         
 
+      </div>
       </div>
     </main>
   )
