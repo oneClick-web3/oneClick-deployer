@@ -3,10 +3,19 @@ import { ethers, Contract } from "ethers";
 import { useSigner } from "wagmi";
 import { greeterCode, logger } from "@/contract-data";
 
-
 const initialGreet = "Hello, show me some airdrops!";
+const fail = false;
+const success = true;
 
-const DeployButton = ({setDeployed, setContractAddress} : {setDeployed: any, setContractAddress: any}) => {
+const DeployButton = ({
+    setDeployed, 
+    setContractAddress, 
+    handleAlert
+} : {
+    setDeployed: any, 
+    setContractAddress: any, 
+    handleAlert: any
+}) => {
     const {data: signer} = useSigner();
     const [isLoading, setIsLoading] = useState<boolean>(false);
   
@@ -24,13 +33,14 @@ const DeployButton = ({setDeployed, setContractAddress} : {setDeployed: any, set
             await greeter.deployTransaction.wait();
         } catch (error) {
             console.log(error);
-            alert('deployment failed');
+            handleAlert(false, 'deploy');
             setIsLoading(false);
             return;
         }
         // usar o react alert com a txHash e contractAddress
-        alert('deployment successful');
-        setContractAddress(greeter.address)
+        // alert('deployment successful');
+        setContractAddress(greeter.address);
+        handleAlert(true, 'deploy');
         setDeployed(true);
     }
 

@@ -9,36 +9,53 @@ import UnlockButton from '@/components/UnlockButton';
 import Greeter from '@/components/Greeter';
 import NetworkSelector from '@/components/NetworkSelector';
 import Connect from '@/components/Connect';
-
-const inter = Inter({ subsets: ['latin'] })
-
-const sepolia = 11155111;
-const hardhat = 31337;
-const linea = 59144;
-const zora = 7777777;
-const base = 8453;
-const polygonzk = 1101;
-const zksyncEra = 324;
+import SuccessAlert from '@/components/alerts/Success';
+import FailAlert from '@/components/alerts/Fail';
 
 export default function Home() {
   const { data: signer } = useSigner();
+  const [txType, setTxType] = useState<'deploy' | 'unlock'>();
   const [locked, setLocked] = useState<boolean>(true);
   const [deployed, setDeployed] = useState<boolean>(false);
   const [contractAddress, setContractAddress] = useState<string>();
+  const [txHash, setTxHash] = useState<string>();
   const [network, setNetwork] = useState<boolean>(false);
+  const [successAlert, setSuccessAlert] = useState<boolean>(false);
+  const [failAlert, setFailAlert] = useState<boolean>(false);
+  const { chain } = useNetwork();
 
-  // const { chain } = useNetwork();
-
-  // useEffect(() => {
-  //   if(
-  //     chain?.id != hardhat
-  //   ) setNetwork(false);
-  // }, [chain])
-
+  const handleAlert = (success: boolean, type?: 'deploy' | 'unlock') => {
+    setTxType(type);
+    if(success) {
+      setSuccessAlert(true);
+      setTimeout(() => setSuccessAlert(false), 5000);
+    }
+    else {
+      setFailAlert(true);
+      setTimeout(() => setFailAlert(false), 5000);  
+    }
+  }
   // console.log('chain', chain);
+  console.log('locked', locked);
 
   return (
     <>
+    {successAlert && ( 
+      <div className="fixed top-4 right-4 z-50 text-white">
+        <SuccessAlert 
+         network={chain?.id} 
+         contractAddress={contractAddress}
+         setSuccessAlert={setSuccessAlert}
+         type={txType}
+        />
+      </div>
+    )}
+    {failAlert && (
+      <div className="fixed top-4 right-4 z-50 text-white">
+        <FailAlert type={txType} />
+      </div>
+    )}
+    
     <main className="h-screen flex items-center justify-center bg-black">
       <div className="border-4 border-green-400 max-w-2xl w-full p-4 rounded-lg bg-black">
         <h1 className="mb-6 text-center text-3xl font-mono font-bold tracking-tight text-white">
@@ -59,11 +76,19 @@ export default function Home() {
               </p>
               <div className="flex justify-center items-center">
                 {locked ? (
-                  <UnlockButton setLocked={setLocked} />
+                  <UnlockButton 
+                   setLocked={setLocked}
+                   handleAlert={handleAlert} />
                 ) : deployed ? (
-                  <Greeter address={contractAddress} />
+                  <Greeter 
+                   address={contractAddress} 
+                   handleAlert={handleAlert}/>
                 ) : (
-                  <DeployButton setDeployed={setDeployed} setContractAddress={setContractAddress} />
+                  <DeployButton 
+                   setDeployed={setDeployed} 
+                   setContractAddress={setContractAddress} 
+                   handleAlert={handleAlert}
+                  />
                 )}
               </div>
             </>

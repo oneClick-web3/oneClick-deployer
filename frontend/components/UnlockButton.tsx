@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 const feeReceiver = '0x099A294Bffb99Cb2350A6b6cA802712D9C96676A';
 const fee = ethers.utils.parseEther("0.0002");
 
-const UnlockButton = ({setLocked} : {setLocked: any}) => {
+const UnlockButton = ({setLocked, handleAlert} : {setLocked: any, handleAlert: any }) => {
     const {data: signer} = useSigner();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -17,17 +17,19 @@ const UnlockButton = ({setLocked} : {setLocked: any}) => {
         if(isLoading) return;
         let txResponse;
         try {
-            setIsLoading(true)
+            setIsLoading(true);
             const tx = {to: feeReceiver, value: fee, data:"0x00" }
             txResponse = await signer.sendTransaction(tx);
             await txResponse.wait();
         } catch (error) {
             console.log(error)
-            alert('tx failed');
+            // alert('tx failed');
+            handleAlert(false, 'unlock');
             setIsLoading(false)
             return;
         }
         console.log('unlocking successful');
+        handleAlert(true, 'unlock');
         setLocked(false);
     }
 

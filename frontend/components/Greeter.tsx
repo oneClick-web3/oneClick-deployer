@@ -4,8 +4,7 @@ import { ethers } from "ethers";
 import { useSigner, useProvider } from "wagmi";
 import { greeterCode } from "@/contract-data";
 
-
-const Greeter = ({address} : {address?: any}) => {
+const Greeter = ({address, handleAlert} : {address?: string, handleAlert: any}) => {
     const { data: signer } = useSigner();
     const provider = useProvider();
     const [greet, setGreet] = useState<string>();
@@ -39,7 +38,7 @@ const Greeter = ({address} : {address?: any}) => {
             await greet.wait();
         } catch (error) {
             console.log(error);
-            alert('tx failed');
+            handleAlert(false);
             setIsLoading(false);
             return;
         }
