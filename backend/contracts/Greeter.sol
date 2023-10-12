@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import './Logger.sol';
+// import './Logger.sol';
 
 contract Greeter {
 
     string private _greet;
 
-    constructor(address logger_, string memory initialGreet) {
+    constructor(string memory initialGreet) {
         // logger = logger_;
-        Logger _logger = Logger(logger_);
-        _logger.emitDeploy(msg.sender, address(this));
+        // Logger _logger = Logger(logger_);
+        // _logger.emitDeploy(msg.sender, address(this));
         _greet = initialGreet;
     }
 

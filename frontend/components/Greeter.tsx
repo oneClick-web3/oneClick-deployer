@@ -33,15 +33,18 @@ const Greeter = ({address} : {address?: any}) => {
         if(isLoading) return;
         if(!address) return;
         try {
+            setIsLoading(true);
             const greeter = new ethers.Contract(address, greeterCode.abi, signer);
             const greet = await greeter.setGreet(greetInput);
             await greet.wait();
         } catch (error) {
             console.log(error);
             alert('tx failed');
+            setIsLoading(false);
             return;
         }
         console.log('greet successful');
+        setIsLoading(false);
         setRenderer(!renderer);
     }
 

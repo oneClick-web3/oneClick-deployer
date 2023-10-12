@@ -5,27 +5,13 @@ import NextHead from 'next/head';
 import { chain, createClient, WagmiConfig, configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-
+import { base, linea, polygonZk, zkSyncEra, zora } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
 import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
-const hardhatChain = {
-  id: 31337,
-  name: 'Hardhat',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Hardhat',
-    symbol: 'HARD',
-  },
-  network: 'hardhat',
-  rpcUrls: {
-    default: 'http://127.0.0.1:8545',
-  },
-  testnet: true,
-};
 
 const { chains, provider } = configureChains(
-  [chain.hardhat],
+  [chain.mainnet, chain.sepolia, chain.hardhat, chain.arbitrum, chain.optimism, base, linea, polygonZk, zkSyncEra, zora],
   [publicProvider()]
 );
 
@@ -44,7 +30,7 @@ const wagmiClient = createClient({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-    <RainbowKitProvider theme={darkTheme({
+    <RainbowKitProvider initialChain={chain.sepolia} theme={darkTheme({
       accentColor: '#4A4747',
       accentColorForeground: 'white',
       borderRadius: 'small',

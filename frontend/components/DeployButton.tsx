@@ -18,12 +18,14 @@ const DeployButton = ({setDeployed, setContractAddress} : {setDeployed: any, set
         if(isLoading) return;
         let greeter: Contract;
         try {
+            setIsLoading(true);
             const factory = new ethers.ContractFactory(greeterCode.abi, greeterCode.bytecode, signer);
-            greeter = await factory.deploy(logger.address, initialGreet);
+            greeter = await factory.deploy(initialGreet);
             await greeter.deployTransaction.wait();
         } catch (error) {
             console.log(error);
             alert('deployment failed');
+            setIsLoading(false);
             return;
         }
         // usar o react alert com a txHash e contractAddress

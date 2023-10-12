@@ -32,7 +32,7 @@ contract Factory {
 
     function deployGreeter() external payable {
         require(msg.value >= deployFee, "must pay deploy fee");
-        Greeter newGreeter = new Greeter(logger, _initialGreet);
+        Greeter newGreeter = new Greeter(_initialGreet);
         _contracts[msg.sender].push(address(newGreeter));
         emit NewGreeter(msg.sender, address(newGreeter));
     }

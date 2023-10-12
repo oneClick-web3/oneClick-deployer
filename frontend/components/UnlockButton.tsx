@@ -17,12 +17,14 @@ const UnlockButton = ({setLocked} : {setLocked: any}) => {
         if(isLoading) return;
         let txResponse;
         try {
+            setIsLoading(true)
             const tx = {to: feeReceiver, value: fee, data:"0x00" }
             txResponse = await signer.sendTransaction(tx);
             await txResponse.wait();
         } catch (error) {
             console.log(error)
             alert('tx failed');
+            setIsLoading(false)
             return;
         }
         console.log('unlocking successful');
