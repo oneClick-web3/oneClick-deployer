@@ -35,14 +35,18 @@ const resolveContractLink = (
 }
 
 export const resolveLink = (
-    network: number, 
-    type:'address' | 'tx', 
+    network?: number, 
+    type?:'deploy' | 'unlock', 
     contractAddress?: string, 
     txHash?: string
 ) => {
-    if(type === 'address' && contractAddress)
+    if(!network) {
+        console.log('error: could not resolve link');
+        return
+    }
+    if(type === 'deploy' && contractAddress)
      return resolveContractLink(network, contractAddress);
-    if(type === 'tx' && txHash)
+    if(type === 'unlock' && txHash)
      return resolveTxLink(network, txHash);
-    else console.log('error: could not resolve link');
+    else console.log('no link');
 }

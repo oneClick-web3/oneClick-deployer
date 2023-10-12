@@ -1,13 +1,9 @@
 import React from "react";
 import { useSwitchNetwork } from "wagmi";
+import { base, linea, polygonZk, zkSyncEra, zora  } from "@/network-config/network-config";
+import { chain } from "wagmi";
 
-const sepolia = 11155111;
-const hardhat = 31337;
-const linea = 59144;
-const zora = 7777777;
-const base = 8453;
-const polygonzk = 1101;
-const zksyncEra = 324;
+const hardhat = chain.hardhat.id;
 const testnet = `sepolia\n(testnet)`
 
 
@@ -28,7 +24,7 @@ const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
             </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black hover:text-black hover:bg-green-400"
-                 onClick={() => handler(hardhat)}
+                 onClick={() => handler(chain.sepolia.id)}
                 >
                         {testnet}
                 </div>

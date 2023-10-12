@@ -20,7 +20,8 @@ function SuccessAlert({
   
   if (!visible) return null;
 
-  const url = "https://etherscan.io/";
+  // const url = "https://etherscan.io/";
+  const url = resolveLink(network, type, contractAddress, txHash);
 
   const deploy = type === 'deploy';
   const unlock = type === 'unlock'
@@ -33,14 +34,14 @@ function SuccessAlert({
   return (
     <div className="fixed top-4 right-4 z-50 bg-black border-4 border-green-400 p-4 rounded flex items-center space-x-2">
       <span className="text-white font-medium font-mono">{deploy? "deployment" : unlock? "unlocking" : "tx"} successful!</span>
-      {deploy && (<a 
+      <a 
         href={url} 
         target="_blank" 
         rel="noopener noreferrer" 
         className="text-blue-300 hover:text-blue-500 hover:underline font-mono"
       >
-        see contract on block explorer.
-      </a>)}
+        see {deploy? "contract" : "tx"} on explorer.
+      </a>
       <button onClick={handleClose} className="bg-black hover:bg-green-400 rounded p-1 focus:outline-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
