@@ -44,6 +44,20 @@ export const polygonZk = {
     testnet: false,   
 }
 
+export const polygonZkTestnet = {
+  id: 1442,
+  name: 'Polygon zkEVM Testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'ether',
+    symbol: 'ETH',
+  },
+  network: 'polygonZkTestnet',
+  rpcUrls: {
+    default: 'https://rpc.public.zkevm-test.net	',
+  },
+  testnet: true,
+}
 
 export const zkSyncEra = {
     id: 324,
@@ -58,6 +72,21 @@ export const zkSyncEra = {
       default: 'https://mainnet.era.zksync.io',
     },
     testnet: false,   
+}
+
+export const zkSyncEraTestnet = {
+  id: 280,
+  name: 'zkSync Era Testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'ether',
+    symbol: 'ETH',
+  },
+  network: 'zkSyncEraTestnet',
+  rpcUrls: {
+    default: 'https://testnet.era.zksync.dev',
+  },
+  testnet: true,
 }
 
 export const linea = {

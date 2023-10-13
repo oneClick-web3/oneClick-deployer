@@ -5,13 +5,15 @@ import NextHead from 'next/head';
 import { chain, createClient, WagmiConfig, configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import { base, linea, polygonZk, zkSyncEra, zora } from '@/network-config/network-config';
+import { base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
 import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.sepolia, chain.hardhat, chain.arbitrum, chain.optimism, base, linea, polygonZk, zkSyncEra, zora],
+  [
+    chain.mainnet, chain.sepolia, chain.hardhat, chain.arbitrum, chain.optimism,
+    base, linea, polygonZk, polygonZkTestnet, zkSyncEra, zkSyncEraTestnet, zora],
   [publicProvider()]
 );
 
@@ -30,7 +32,7 @@ const wagmiClient = createClient({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-    <RainbowKitProvider initialChain={chain.sepolia} theme={darkTheme({
+    <RainbowKitProvider theme={darkTheme({
       accentColor: '#4A4747',
       accentColorForeground: 'white',
       borderRadius: 'small',

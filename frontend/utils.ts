@@ -1,4 +1,4 @@
-import { base, linea, polygonZk, zkSyncEra, zora } from '@/network-config/network-config';
+import { base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora } from '@/network-config/network-config';
 import { chain } from 'wagmi';
 
 
@@ -15,6 +15,8 @@ const resolveTxLink = (
     if(network === polygonZk.id) return `https://zkevm.polygonscan.com/tx/${txHash}`;
     if(network === zkSyncEra.id) return `https://explorer.zksync.io/tx/${txHash}`;
     if(network === zora.id) return `https://explorer.zora.energy/tx/${txHash}`;
+    if(network === polygonZkTestnet.id) return `https://testnet-zkevm.polygonscan.com/tx/${txHash}`;
+    if(network === zkSyncEraTestnet.id) return `https://goerli.explorer.zksync.io/tx/${txHash}`;
 }
 
 const resolveContractLink = (
@@ -31,7 +33,8 @@ const resolveContractLink = (
     if(network === polygonZk.id) return `https://zkevm.polygonscan.com/address/${contractAddress}`;
     if(network === zkSyncEra.id) return `https://explorer.zksync.io/address/${contractAddress}`;
     if(network === zora.id) return `https://explorer.zora.energy/address/${contractAddress}`;
-
+    if(network === polygonZkTestnet.id) return `https://testnet-zkevm.polygonscan.com/address/${contractAddress}`;
+    if(network === zkSyncEraTestnet.id) return `https://goerli.explorer.zksync.io/address/${contractAddress}`;
 }
 
 export const resolveLink = (
@@ -41,7 +44,7 @@ export const resolveLink = (
     txHash?: string
 ) => {
     if(!network) {
-        console.log('error: could not resolve link');
+        console.log('error: resolve link: no network provided');
         return
     }
     if(type === 'deploy' && contractAddress)

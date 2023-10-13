@@ -45,6 +45,7 @@ export default function Home() {
         <SuccessAlert 
          network={chain?.id} 
          contractAddress={contractAddress}
+         txHash={txHash}
          setSuccessAlert={setSuccessAlert}
          type={txType}
         />
@@ -78,7 +79,9 @@ export default function Home() {
                 {locked ? (
                   <UnlockButton 
                    setLocked={setLocked}
-                   handleAlert={handleAlert} />
+                   setTxHash={setTxHash}
+                   handleAlert={handleAlert} 
+                  />
                 ) : deployed ? (
                   <Greeter 
                    address={contractAddress} 

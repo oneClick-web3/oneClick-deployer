@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { ethers, Contract } from "ethers";
-import { useSigner } from "wagmi";
+import { useSigner, useNetwork } from "wagmi";
 import { greeterCode, logger } from "@/contract-data";
+import { zkSyncEra, zkSyncEraTestnet } from "@/network-config/network-config";
 
 const initialGreet = "Hello, show me some airdrops!";
-const fail = false;
-const success = true;
 
 const DeployButton = ({
     setDeployed, 
@@ -18,6 +17,7 @@ const DeployButton = ({
 }) => {
     const {data: signer} = useSigner();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const network = useNetwork();
   
     const deployHandler = async() => {
         if(!signer) {
@@ -26,6 +26,7 @@ const DeployButton = ({
         }
         if(isLoading) return;
         let greeter: Contract;
+        
         try {
             setIsLoading(true);
             const factory = new ethers.ContractFactory(greeterCode.abi, greeterCode.bytecode, signer);
