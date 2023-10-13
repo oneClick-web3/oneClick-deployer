@@ -1,7 +1,10 @@
 import React from "react";
 import { useSwitchNetwork } from "wagmi";
-import { base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora  } from "@/network-config/network-config";
+import {
+     base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, baseGoerli
+} from "@/network-config/network-config";
 import { chain } from "wagmi";
+import { addChain } from "@/utils";
 
 const hardhat = chain.hardhat.id;
 const testnet = `sepolia\n(testnet)`;
@@ -10,11 +13,17 @@ const testnet = `sepolia\n(testnet)`;
 const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
     const { switchNetwork } = useSwitchNetwork();
 
-    const handler = (network: number) => {
+    const handler = async(network: number) => {
         if(switchNetwork) {
+            try {
+                await addChain(network)       
+            } catch (error) {
+                console.log(error);
+                return
+            }
             switchNetwork?.(network);
             setNetwork(true);
-        }
+        } else console.log('Error: useSwitchNetwork error')
     }
 
     return (
@@ -30,13 +39,13 @@ const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(hardhat)}
+                 onClick={() => handler(baseGoerli.id)}
                  >
                         base
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(hardhat)} 
+                 onClick={() => handler(lineaGoerli.id)} 
                 >
                         linea
                 </div>
@@ -47,14 +56,14 @@ const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
                         polygon zk
                 </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(zkSyncEraTestnet.id)}
+                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-not-allowed hover:text-black hover:bg-red-400"
+                //  onClick={() => handler(zkSyncEraTestnet.id)}
                 >
-                        zkSync era
+                        zkSync era (soon)
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(hardhat)}
+                 onClick={() => handler(zoraGoerli.id)}
                 >
                         zora
                 </div>

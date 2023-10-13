@@ -35,8 +35,10 @@ export default function Home() {
       setTimeout(() => setFailAlert(false), 5000);  
     }
   }
-  // console.log('chain', chain);
-  console.log('locked', locked);
+  console.log('chain', chain?.name, chain?.id);
+  console.log('network?', network )
+  // console.log('locked', locked);
+  // console.log('signer', signer)
 
   return (
     <>
@@ -85,6 +87,7 @@ export default function Home() {
                 ) : deployed ? (
                   <Greeter 
                    address={contractAddress} 
+                   setTxHash={setTxHash}
                    handleAlert={handleAlert}/>
                 ) : (
                   <DeployButton 

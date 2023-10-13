@@ -5,7 +5,9 @@ import NextHead from 'next/head';
 import { chain, createClient, WagmiConfig, configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import { base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora } from '@/network-config/network-config';
+import { 
+  base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, baseGoerli
+} from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
 import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
@@ -13,7 +15,8 @@ import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/ra
 const { chains, provider } = configureChains(
   [
     chain.mainnet, chain.sepolia, chain.hardhat, chain.arbitrum, chain.optimism,
-    base, linea, polygonZk, polygonZkTestnet, zkSyncEra, zkSyncEraTestnet, zora],
+    base, baseGoerli, linea, polygonZk, polygonZkTestnet, zkSyncEra, zkSyncEraTestnet, zora, zoraGoerli, lineaGoerli
+  ],
   [publicProvider()]
 );
 

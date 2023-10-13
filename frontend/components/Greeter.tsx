@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { useSigner, useProvider } from "wagmi";
 import { greeterCode } from "@/contract-data";
 
-const Greeter = ({address, handleAlert} : {address?: string, handleAlert: any}) => {
+const Greeter = ({address, setTxHash, handleAlert} : {address?: string, setTxHash: any, handleAlert: any}) => {
     const { data: signer } = useSigner();
     const provider = useProvider();
     const [greet, setGreet] = useState<string>();
@@ -31,11 +31,12 @@ const Greeter = ({address, handleAlert} : {address?: string, handleAlert: any}) 
         if(!signer) return;
         if(isLoading) return;
         if(!address) return;
+        let receipt;
         try {
             setIsLoading(true);
             const greeter = new ethers.Contract(address, greeterCode.abi, signer);
             const greet = await greeter.setGreet(greetInput);
-            await greet.wait();
+            receipt = await greet.wait();
         } catch (error) {
             console.log(error);
             handleAlert(false);
@@ -44,6 +45,8 @@ const Greeter = ({address, handleAlert} : {address?: string, handleAlert: any}) 
         }
         console.log('greet successful');
         setIsLoading(false);
+        setTxHash(receipt.transactionHash);
+        handleAlert(true);
         setRenderer(!renderer);
     }
 

@@ -24,7 +24,7 @@ function SuccessAlert({
   const url = resolveLink(network, type, contractAddress, txHash);
 
   const deploy = type === 'deploy';
-  const unlock = type === 'unlock'
+  const unlock = type === 'unlock';
 
   const handleClose = () => {
     setVisible(false);
@@ -40,7 +40,7 @@ function SuccessAlert({
         rel="noopener noreferrer" 
         className="text-blue-300 hover:text-blue-500 hover:underline font-mono"
       >
-        see {deploy? "contract" : "tx"} on explorer.
+        see {deploy? "contract" : "tx"} on block explorer.
       </a>
       <button onClick={handleClose} className="bg-black hover:bg-green-400 rounded p-1 focus:outline-none">
         <svg
