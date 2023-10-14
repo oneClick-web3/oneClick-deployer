@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const url = "https://github.com/oneClick-web3/oneClick-deployer/issues";
+const url = "https://github.com/oneclick-web3/oneClick-deployer/issues";
 
 function FailAlert({ type } : { type?: 'deploy' | 'unlock' }) {
 
