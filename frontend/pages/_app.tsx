@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app';
 import * as React from 'react';
 import NextHead from 'next/head';
 import { chain, createClient, WagmiConfig, configureChains } from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { 
   base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, baseGoerli
@@ -21,7 +20,7 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'GreeterDeployer',
+  appName: 'OneClick Deployer',
   chains,
 });
 
@@ -41,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
       borderRadius: 'small',
     })} chains={chains} coolMode>
       <NextHead>
-        <title>GreeterDeployer </title>
+        <title>OneClick Deployer </title>
       </NextHead>
       <Component {...pageProps} />
     </RainbowKitProvider>
