@@ -105,7 +105,7 @@ export default function Home() {
     </main>
     <div className="fixed bottom-0 left-0 w-full bg-black p-4">
       <div className="text-center">
-          <Link href="https://github.com/YourUsername/YourRepoName" className="text-white hover:underline cursor-pointer font-mono">
+          <Link href="https://github.com/oneClick-web3/oneClick-deployer" className="text-white hover:underline cursor-pointer font-mono">
               View on GitHub
           </Link>
       </div>

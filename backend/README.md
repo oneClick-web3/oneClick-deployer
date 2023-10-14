@@ -1,13 +1,22 @@
-# Sample Hardhat Project
+# Greeter.sol
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+```solidity
+contract Greeter {
 
-Try running some of the following tasks:
+    string private _greet;
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+    constructor(string memory initialGreet) {
+        _greet = initialGreet;
+    }
+
+    function setGreet(string memory greet) external {
+        _greet = greet;
+    }
+
+    function getGreet() external view returns(string memory) {
+        return _greet;
+    }
+
+}
+
 ```
