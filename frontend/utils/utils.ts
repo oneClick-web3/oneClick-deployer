@@ -43,7 +43,7 @@ export function resolveLink(
     txHash?: string
 ) {
     if(!network) {
-        console.log('error: resolve link: no network provided');
+        console.log('error: resolveLink: no network provided');
         return
     }
     if(type === 'deploy' && contractAddress)

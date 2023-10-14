@@ -208,5 +208,5 @@ export const lineaGoerli = {
       name: 'Goerli Linea Scan',
       url: 'https://goerli.lineascan.build/'}
   },
-  testnet: false,   
+  testnet: true,   
 }

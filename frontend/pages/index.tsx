@@ -1,9 +1,6 @@
-import { Inter } from 'next/font/google';
 import Link from 'next/link';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useNetwork, useSigner } from 'wagmi';
-import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
+import { useState } from 'react';
 import DeployButton from '@/components/DeployButton';
 import UnlockButton from '@/components/UnlockButton';
 import Greeter from '@/components/Greeter';

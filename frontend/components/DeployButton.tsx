@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { ethers, Contract } from "ethers";
-import { useSigner, useNetwork } from "wagmi";
-import { greeterCode, logger } from "@/contract-data";
-import { zkSyncEra, zkSyncEraTestnet } from "@/network-config/network-config";
+import { useSigner } from "wagmi";
+import { greeterCode } from "@/contract-data";
 
 const initialGreet = "Hello, show me some airdrops!";
 
@@ -17,7 +16,6 @@ const DeployButton = ({
 }) => {
     const {data: signer} = useSigner();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const network = useNetwork();
   
     const deployHandler = async() => {
         if(!signer) {
@@ -38,8 +36,6 @@ const DeployButton = ({
             setIsLoading(false);
             return;
         }
-        // usar o react alert com a txHash e contractAddress
-        // alert('deployment successful');
         setContractAddress(greeter.address);
         handleAlert(true, 'deploy');
         setDeployed(true);
@@ -52,7 +48,7 @@ const DeployButton = ({
             className="px-4 py-2 rounded bg-gray-500 border-4 border-white hover:bg-green-400 text-black font-mono"
             onClick={deployHandler}
             >
-                {isLoading? "deploying..." : "Deploy!"}
+                {isLoading? "deploying..." : "deploy!"}
             </button>
         </div>
         </>

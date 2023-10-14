@@ -4,7 +4,7 @@ import {
      base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, baseGoerli
 } from "@/network-config/network-config";
 import { chain } from "wagmi";
-import { addChain } from "@/utils";
+import { addChain } from "@/utils/utils";
 
 const hardhat = chain.hardhat.id;
 const testnet = `sepolia\n(testnet)`;

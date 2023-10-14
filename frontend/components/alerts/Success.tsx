@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { resolveLink } from '@/utils';
+import { resolveLink } from '@/utils/utils';
 
 
 function SuccessAlert({
@@ -40,7 +40,7 @@ function SuccessAlert({
         rel="noopener noreferrer" 
         className="text-blue-300 hover:text-blue-500 hover:underline font-mono"
       >
-        see {deploy? "contract" : "tx"} on block explorer.
+        view {deploy? "contract" : ""} on block explorer.
       </a>
       <button onClick={handleClose} className="bg-black hover:bg-green-400 rounded p-1 focus:outline-none">
         <svg
@@ -48,7 +48,7 @@ function SuccessAlert({
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          className="h-5 w-5 text-white"
+          className="h-5 w-5 text-white hover:text-black"
         >
           <path
             strokeLinecap="round"

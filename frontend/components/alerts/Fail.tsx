@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { resolveLink } from '@/utils';
 
 const url = "github repo issues"
 
