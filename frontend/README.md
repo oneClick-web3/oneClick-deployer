@@ -1,6 +1,6 @@
 <p align="center">
   <img 
-   src="https://github.com/oneclick-web3/oneClick-deployer/blob/master/assets/oneclick-logo-2.png?raw=true" alt="Sublime's custom image"/>
+   src="https://github.com/oneclick-web3/oneClick-deployer/blob/master/assets/oneclick-logo.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
 # oneClick Deployer
