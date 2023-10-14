@@ -1,7 +1,9 @@
 <p align="center">
   <img 
    src="https://github.com/oneClick-web3/oneClick-deployer/blob/master/oneClick-Logo.png?raw=true" alt="Sublime's custom image"/>
-</p># oneClick Deployer
+</p>
+
+# oneClick Deployer
 
 Deploy and interact with greeter smart contracts with a simple click.
 
