@@ -52,33 +52,29 @@ const Greeter = ({address, setTxHash, handleAlert} : {address?: string, setTxHas
 
     return (
         <>
-        <div className="grid grid-rows-2">
-            <div className="grid grid-cols-2">
-                <div>
-                    <input
-                    className="py-1 border-4 border-green-400"
-                    placeholder="new greet"
-                    type="text"
-                    value={greetInput}
-                    onChange={(e) => setGreetInput(e.target.value)}
-                    />
-                </div>
-                <div className="px-2">
-                    <button 
-                    className="px-4 py-2 rounded bg-gray-500 border-4 border-black hover:bg-green-400 text-black font-mono dark:border-white"
-                    onClick={setGreetHandler}
-                    >
-                    {isLoading? "loading..." : "set greet"}
-                </button>
-                </div>
-            </div>
-            <div>
-             <p className="text-black dark:text-white font-mono text-l">current greet:</p>
-             <h1 className="text-black dark:text-white font-mono text-2xl">{greet}</h1>
-            </div>
-
+        <div className="grid grid-rows-2 items-start">
+          <div className="flex justify-center space-x-2 mb-4">
+            <input
+              className="py-1 px-2 w-48 border-4 border-green-400"
+              placeholder="new greet"
+              type="text"
+              value={greetInput}
+              onChange={(e) => setGreetInput(e.target.value)}
+            />
+            <button 
+              className="px-4 py-2 rounded bg-gray-500 border-4 border-black hover:bg-green-400 text-black font-mono dark:border-white"
+              onClick={setGreetHandler}
+              disabled={isLoading}
+            >
+              {isLoading ? "loading..." : "set greet"}
+            </button>
+          </div>
+          <div>
+            <p className="text-black dark:text-white font-mono text-l">current greet:</p>
+            <h1 className="text-black dark:text-white font-mono text-2xl whitespace-normal overflow-auto">{greet}</h1>
+          </div>
         </div>
-        </>
+      </>
     )
 }
 
