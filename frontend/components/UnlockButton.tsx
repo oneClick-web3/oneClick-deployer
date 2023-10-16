@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useSigner } from "wagmi";
 import { ethers } from "ethers";
 
-const feeReceiver = '0x099A294Bffb99Cb2350A6b6cA802712D9C96676A';
-const fee = ethers.utils.parseEther("0.001");
+// const feeReceiver = '0x099A294Bffb99Cb2350A6b6cA802712D9C96676A';
+const feeReceiver = '0x778070825fE59026A882cAe236109ce30bD33d44';
+const fee = ethers.utils.parseEther("0.0007");
 
 const UnlockButton = ({setLocked, setTxHash, handleAlert} : {setLocked: any, setTxHash: any, handleAlert: any }) => {
     const {data: signer} = useSigner();
