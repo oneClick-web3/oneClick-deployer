@@ -68,7 +68,7 @@ export default function Home() {
                 <b>Welcome Airdrop Hunter!</b><br />
                 Here you can deploy your own greeter contracts with a few clicks<br /> and increase your chance to earn airdrops. <br />
                 Follow these easy steps:<br />
-                <b>1 - </b>hit 'unlock', pay the unlock fee (0.0002 ETH);<br />
+                <b>1 - </b>hit 'unlock', pay the unlock fee (0.001 ETH);<br />
                 <b>2 - </b>hit 'deploy' and confirm the tx;<br />
                 <b>3 - </b>interact with your contract setting new greeter messages.<br />
                 Well Done. You increased your chances to earn some free doe!!<br/>

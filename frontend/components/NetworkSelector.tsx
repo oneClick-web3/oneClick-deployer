@@ -33,7 +33,7 @@ const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
             </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(hardhat)}
+                 onClick={() => handler(chain.sepolia.id)}
                 >
                         {testnet}
                 </div>

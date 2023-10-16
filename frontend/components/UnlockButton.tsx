@@ -3,7 +3,7 @@ import { useSigner } from "wagmi";
 import { ethers } from "ethers";
 
 const feeReceiver = '0x099A294Bffb99Cb2350A6b6cA802712D9C96676A';
-const fee = ethers.utils.parseEther("0.0002");
+const fee = ethers.utils.parseEther("0.001");
 
 const UnlockButton = ({setLocked, setTxHash, handleAlert} : {setLocked: any, setTxHash: any, handleAlert: any }) => {
     const {data: signer} = useSigner();
