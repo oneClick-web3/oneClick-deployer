@@ -39,19 +39,19 @@ const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(baseGoerli.id)}
+                 onClick={() => handler(base.id)}
                  >
                         base
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(lineaGoerli.id)} 
+                 onClick={() => handler(linea.id)} 
                 >
                         linea
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(polygonZkTestnet.id)}
+                 onClick={() => handler(polygonZk.id)}
                 >
                         polygon zk
                 </div>
@@ -63,7 +63,7 @@ const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(zoraGoerli.id)}
+                 onClick={() => handler(zora.id)}
                 >
                         zora
                 </div>
