@@ -6,7 +6,7 @@ import {
 import { chain } from "wagmi";
 import { addChain } from "@/utils/utils";
 
-const hardhat = chain.hardhat.id;
+// const hardhat = chain.hardhat.id;
 const testnet = `sepolia\n(testnet)`;
 
 
