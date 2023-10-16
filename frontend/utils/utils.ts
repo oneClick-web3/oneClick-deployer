@@ -3,11 +3,11 @@ import {
     base, baseGoerli, linea, polygonZk, polygonZkTestnet, 
     zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
 } from '@/network-config/network-config';
-import { hardhat } from 'wagmi/chains';
 
 
 export async function addChain(network: number) {
     if(network === chain.hardhat.id) return;
+    if(network === chain.sepolia.id) return;
     const chain_ = resolveChain(network);
     if(!chain_)
      throw new Error('wrong network arg')
@@ -57,6 +57,7 @@ export function resolveLink(
 
 const resolveChain = (network: number) => {
     // if(network === chain.hardhat.id) return chain.hardhat
+    // if(network === chain.sepolia.id) return chain.sepolia;
     if(network === base.id ) return base;
     if(network === linea.id) return linea;
     if(network === polygonZk.id) return polygonZk;
