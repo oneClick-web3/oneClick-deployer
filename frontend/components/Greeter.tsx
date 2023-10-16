@@ -70,8 +70,8 @@ const Greeter = ({address, setTxHash, handleAlert} : {address?: string, setTxHas
             </button>
           </div>
           <div>
-            <p className="text-black dark:text-white font-mono text-l">current greet:</p>
-            <h1 className="text-black dark:text-white font-mono text-2xl whitespace-normal overflow-auto">{greet}</h1>
+            <p className="text-white font-mono text-l">current greet:</p>
+            <h1 className="text-white font-mono text-2xl whitespace-normal overflow-auto">{greet}</h1>
           </div>
         </div>
       </>
