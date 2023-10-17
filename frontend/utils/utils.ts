@@ -63,8 +63,32 @@ const resolveChain = (network: number) => {
     if(network === zkSyncEraTestnet.id) return zkSyncEraTestnet
     if(network === zoraGoerli.id) return zoraGoerli;
     if(network === lineaGoerli.id) return lineaGoerli;
-    // if(network === polygonZkEvmTestnet.id) return polygonZkEvmTestnet;
     // if(network === baseGoerli.id) return baseGoerli;
+    if(network === polygonZkEvmTestnet.id) return ({
+        id: 1442,
+        name: "Polygon zkEVM Testnet",
+        network: "polygon-zkevm-testnet",
+        nativeCurrency: {
+            name: "Ether",
+            symbol: "ETH",
+            decimals: 18,
+        },
+        rpcUrls: {
+            default: {
+                http: ["https://rpc.public.zkevm-test.net"],
+            },
+            public: {
+                http: ["https://rpc.public.zkevm-test.net"],
+            },
+        },
+        blockExplorers: {
+            default: {
+                name: "Blockscout",
+                url: "https://explorer.public.zkevm-test.net",
+            },
+        },
+        testnet: true,
+    });
     if(network === polygonZkEvm.id) return (
         {
             id: 1101,
@@ -116,7 +140,7 @@ const resolveTxLink = (
     if(network === zora.id)
         return zora.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === polygonZkEvmTestnet.id)
-        return polygonZkEvmTestnet.blockExplorers.default.url.concat(`/tx/${txHash}`);
+        return `https://testnet-zkevm.polygonscan.com/tx/${txHash}`;
     if(network === zkSyncEraTestnet.id) 
         return zkSyncEraTestnet.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === zoraGoerli.id) 
@@ -149,7 +173,7 @@ const resolveContractLink = (
     if(network === zora.id)
         return zora.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === polygonZkEvmTestnet.id)
-        return polygonZkEvmTestnet.blockExplorers.default.url.concat(`/address/${contractAddress}`);
+        return `https://testnet-zkevm.polygonscan.com/address/${contractAddress}`;
     if(network === zkSyncEraTestnet.id)
         return zkSyncEraTestnet.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === zoraGoerli.id) 
