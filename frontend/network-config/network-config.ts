@@ -171,10 +171,10 @@ export const zkSyncEraTestnet = {
 
 export const linea = {
     id: 59144,
-    name: 'Linea',
+    name: 'Linea Mainnet',
     nativeCurrency: {
       decimals: 18,
-      name: 'ether',
+      name: 'Ether',
       symbol: 'ETH',
     },
     network: 'linea',

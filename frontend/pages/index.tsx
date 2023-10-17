@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { useNetwork, useSigner } from 'wagmi';
-import { useState } from 'react';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useNetwork, useSigner, useSwitchNetwork } from 'wagmi';
+import { useEffect, useState } from 'react';
 import DeployButton from '@/components/DeployButton';
 import UnlockButton from '@/components/UnlockButton';
 import Greeter from '@/components/Greeter';
@@ -17,9 +18,13 @@ export default function Home() {
   const [contractAddress, setContractAddress] = useState<string>();
   const [txHash, setTxHash] = useState<string>();
   const [network, setNetwork] = useState<boolean>(false);
+  // 
+  const [newChain, setNewChain] = useState<number>();
+  // 
   const [successAlert, setSuccessAlert] = useState<boolean>(false);
   const [failAlert, setFailAlert] = useState<boolean>(false);
   const { chain } = useNetwork();
+  const { switchNetwork, isLoading } = useSwitchNetwork();
 
   const handleAlert = (success: boolean, type?: 'deploy' | 'unlock') => {
     setTxType(type);
@@ -32,10 +37,20 @@ export default function Home() {
       setTimeout(() => setFailAlert(false), 5000);  
     }
   }
+
+  useEffect(() => {
+    if(newChain){
+      if(chain?.id != newChain) switchNetwork?.(newChain);
+      // if(!isLoading) 
+       setNetwork(true);
+    }
+  }, [newChain])
+
+
   console.log('chain', chain?.name, chain?.id);
   console.log('network?', network )
   // console.log('locked', locked);
-  // console.log('signer', signer)
+  console.log('signer', signer)
 
   return (
     <>
@@ -96,7 +111,7 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <NetworkSelector setNetwork={setNetwork} />
+            <NetworkSelector setNetwork={setNetwork} setNewChain={setNewChain} />
           )
         ) : (
           <Connect />
