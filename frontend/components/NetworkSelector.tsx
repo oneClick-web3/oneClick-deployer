@@ -33,37 +33,37 @@ const NetworkSelector = ({ setNetwork } : { setNetwork: any }) => {
                 <h1 className="text-xl font-mono text-white">Select a Network</h1>
             </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
                  onClick={() => handler(sepolia.id)}
                 >
                         {testnet}
                 </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
                  onClick={() => handler(base.id)}
                  >
                         base
                 </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
                  onClick={() => handler(linea.id)} 
                 >
                         linea
                 </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
                  onClick={() => handler(polygonZkEvm.id)}
                 >
                         polygon zk
                 </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-not-allowed hover:text-black hover:bg-red-400"
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-not-allowed hover:text-black hover:bg-red-400"
                 //  onClick={() => handler(zkSyncEraTestnet.id)}
                 >
                         zkSync era (soon)
                 </div>
                 <div 
-                 className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
                  onClick={() => handler(zora.id)}
                 >
                         zora
