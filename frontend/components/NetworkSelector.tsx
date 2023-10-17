@@ -10,21 +10,21 @@ import { addChain } from "@/utils/utils";
 const testnet = `sepolia\n(testnet)`;
 
 
-const NetworkSelector = ({setNetwork, setNewChain} : {setNetwork: any, setNewChain: any}) => {
-    // const { switchNetworkAsync } = useSwitchNetwork();
+const NetworkSelector = ({ setNetwork } : { setNetwork: any }) => {
+    const { switchNetwork } = useSwitchNetwork();
 
     const handler = async(network: number) => {
-        // if(switchNetworkAsync) {
+        if(switchNetwork) {
             try {
                 await addChain(network)       
             } catch (error) {
                 console.log(error);
                 return
             }
-            // await switchNetworkAsync(network);
-            // setNetwork(true);
-        // } else console.log('Error: useSwitchNetwork error')
-        setNewChain(network);
+            switchNetwork(network);
+            setNetwork(true);
+        } else console.log('Error: useSwitchNetwork error')
+        // setNewChain(network);
     }
 
     return (

@@ -19,13 +19,13 @@ export default function Home() {
   const [txHash, setTxHash] = useState<string>();
   const [network, setNetwork] = useState<boolean>(false);
   // 
-  const [newChain, setNewChain] = useState<number>();
-  const [renderer, setRenderer] = useState<boolean>(false);
+  // const [newChain, setNewChain] = useState<number>();
+  // const [renderer, setRenderer] = useState<boolean>(false);
   // 
   const [successAlert, setSuccessAlert] = useState<boolean>(false);
   const [failAlert, setFailAlert] = useState<boolean>(false);
   const { chain } = useNetwork();
-  const { switchNetwork } = useSwitchNetwork();
+  // const { switchNetwork } = useSwitchNetwork();
 
   const handleAlert = (success: boolean, type?: 'deploy' | 'unlock') => {
     setTxType(type);
@@ -39,13 +39,13 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    if(newChain){
-      if(chain?.id != newChain) switchNetwork?.(newChain);
-      // if(!isLoading) 
-       setNetwork(true);
-    }
-  }, [newChain])
+  // useEffect(() => {
+  //   if(newChain){
+  //     if(chain?.id != newChain) switchNetwork?.(newChain);
+  //     // if(!isLoading) 
+  //      setNetwork(true);
+  //   }
+  // }, [newChain])
 
 
 
@@ -114,7 +114,9 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <NetworkSelector setNetwork={setNetwork} setNewChain={setNewChain} />
+            <NetworkSelector setNetwork={setNetwork} 
+            // setNewChain={setNewChain}
+            />
           )
         ) : (
           <Connect />
