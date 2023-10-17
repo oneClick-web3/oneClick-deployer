@@ -11,7 +11,7 @@ import SuccessAlert from '@/components/alerts/Success';
 import FailAlert from '@/components/alerts/Fail';
 
 export default function Home() {
-  const { data: signer } = useSigner();
+  const { data: signer, isLoading, error } = useSigner();
   const [txType, setTxType] = useState<'deploy' | 'unlock'>();
   const [locked, setLocked] = useState<boolean>(true);
   const [deployed, setDeployed] = useState<boolean>(false);
@@ -20,11 +20,12 @@ export default function Home() {
   const [network, setNetwork] = useState<boolean>(false);
   // 
   const [newChain, setNewChain] = useState<number>();
+  const [renderer, setRenderer] = useState<boolean>(false);
   // 
   const [successAlert, setSuccessAlert] = useState<boolean>(false);
   const [failAlert, setFailAlert] = useState<boolean>(false);
   const { chain } = useNetwork();
-  const { switchNetwork, isLoading } = useSwitchNetwork();
+  const { switchNetwork } = useSwitchNetwork();
 
   const handleAlert = (success: boolean, type?: 'deploy' | 'unlock') => {
     setTxType(type);
@@ -47,10 +48,12 @@ export default function Home() {
   }, [newChain])
 
 
+
   console.log('chain', chain?.name, chain?.id);
   console.log('network?', network )
   // console.log('locked', locked);
   console.log('signer', signer)
+  console.log('signer error', error);
 
   return (
     <>

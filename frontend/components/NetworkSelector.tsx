@@ -1,9 +1,9 @@
 import React from "react";
 import { useSwitchNetwork } from "wagmi";
 import {
-     base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, baseGoerli
+     base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
 } from "@/network-config/network-config";
-import { chain } from "wagmi";
+import { sepolia, hardhat, polygonZkEvm, polygonZkEvmTestnet, baseGoerli } from "wagmi/chains";
 import { addChain } from "@/utils/utils";
 
 // const hardhat = chain.hardhat.id;
@@ -34,7 +34,7 @@ const NetworkSelector = ({setNetwork, setNewChain} : {setNetwork: any, setNewCha
             </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(chain.sepolia.id)}
+                 onClick={() => handler(sepolia.id)}
                 >
                         {testnet}
                 </div>
@@ -52,7 +52,7 @@ const NetworkSelector = ({setNetwork, setNewChain} : {setNetwork: any, setNewCha
                 </div>
                 <div 
                  className="p-4 m-2 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(polygonZk.id)}
+                 onClick={() => handler(polygonZkEvm.id)}
                 >
                         polygon zk
                 </div>

@@ -4,12 +4,17 @@ export const base = {
     name: 'Base Mainnet',
     nativeCurrency: {
       decimals: 18,
-      name: 'ether',
+      name: 'Ether',
       symbol: 'ETH',
     },
     network: 'base',
     rpcUrls: {
-      default: 'https://mainnet.base.org/',
+      default: {
+        http: ['https://mainnet.base.org/']
+      },
+      public: {
+        http: ['https://mainnet.base.org/']
+      }
     },
     blockExplorers: {
       default: {
@@ -26,12 +31,14 @@ export const baseGoerli = {
   name: 'Base Goerli',
   nativeCurrency: {
     decimals: 18,
-    name: 'ether',
+    name: 'Ether',
     symbol: 'ETH',
   },
-  network: 'baseGoerli',
+  network: 'base-goerli',
   rpcUrls: {
-    default: 'https://goerli.base.org/',
+    default: {
+      http:['https://goerli.base.org/'],
+    }
   },
   blockExplorers: {
     default: {
@@ -47,12 +54,17 @@ export const zora = {
     name: 'Zora',
     nativeCurrency: {
       decimals: 18,
-      name: 'ether',
+      name: 'Ether',
       symbol: 'ETH',
     },
     network: 'zora',
     rpcUrls: {
-      default: 'https://rpc.zora.energy/',
+      default: {
+        http: ['https://rpc.zora.energy/']
+      },
+      public: {
+        http: ['https://rpc.zora.energy/']
+      }
     },
     blockExplorers: {
       default: {
@@ -68,12 +80,17 @@ export const zoraGoerli = {
   name: 'Zora Goerli',
   nativeCurrency: {
     decimals: 18,
-    name: 'ether',
+    name: 'Ether',
     symbol: 'ETH',
   },
   network: 'zoraGoerli',
   rpcUrls: {
-    default: 'https://testnet.rpc.zora.energy/',
+    default: {
+      http: ['https://testnet.rpc.zora.energy/']
+    },
+    public: {
+      http: ['https://testnet.rpc.zora.energy/']
+    }
   },
   testnet: true,
   blockExplorers: {
@@ -132,12 +149,17 @@ export const zkSyncEra = {
     name: 'zkSync Era Mainnet',
     nativeCurrency: {
       decimals: 18,
-      name: 'ether',
+      name: 'Ether',
       symbol: 'ETH',
     },
     network: 'zkSyncEra',
     rpcUrls: {
-      default: 'https://mainnet.era.zksync.io',
+      default: {
+        http: ['https://mainnet.era.zksync.io']
+      },
+      public: {
+        http: ['https://mainnet.era.zksync.io']
+      }
     },
     blockExplorers: {
       default: {
@@ -153,12 +175,17 @@ export const zkSyncEraTestnet = {
   name: 'zkSync Era Testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'ether',
+    name: 'Ether',
     symbol: 'ETH',
   },
-  network: 'zkSyncEraTestnet',
+  network: 'zkSyncEra-testnet',
   rpcUrls: {
-    default: 'https://testnet.era.zksync.dev',
+    default: {
+      http: ['https://testnet.era.zksync.dev']
+    },
+    public: {
+      http: ['https://testnet.era.zksync.dev']
+    }
   },
   blockExplorers: {
     default: {
@@ -179,7 +206,12 @@ export const linea = {
     },
     network: 'linea',
     rpcUrls: {
-      default: 'https://rpc.linea.build',
+      default: {
+        http:['https://rpc.linea.build']
+      },
+      public: {
+        http:['https://rpc.linea.build']
+      }
     },
     blockExplorers: {
       default: {
@@ -196,12 +228,17 @@ export const lineaGoerli = {
   name: 'Linea Goerli',
   nativeCurrency: {
     decimals: 18,
-    name: 'ether',
+    name: 'Ether',
     symbol: 'ETH',
   },
-  network: 'lineaGoerli',
+  network: 'linea-goerli',
   rpcUrls: {
-    default: 'https://rpc.goerli.linea.build ',
+    default: {
+      http: ['https://rpc.goerli.linea.build ']
+    },
+    public: {
+      http: ['https://rpc.goerli.linea.build ']
+    }
   },
   blockExplorers: {
     default: {

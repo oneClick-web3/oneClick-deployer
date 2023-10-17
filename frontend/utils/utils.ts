@@ -1,13 +1,14 @@
-import { chain } from 'wagmi';
 import { 
-    base, baseGoerli, linea, polygonZk, polygonZkTestnet, 
-    zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
+    mainnet, sepolia, arbitrum, optimism, hardhat, baseGoerli, polygonZkEvm, polygonZkEvmTestnet
+} from 'wagmi/chains';
+import { 
+    base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
 } from '@/network-config/network-config';
 
 
 export async function addChain(network: number) {
-    if(network === chain.hardhat.id) return;
-    if(network === chain.sepolia.id) return;
+    if(network === hardhat.id) return;
+    if(network === sepolia.id) return;
     const chain_ = resolveChain(network);
     if(!chain_)
      throw new Error('wrong network arg')
@@ -21,9 +22,8 @@ export async function addChain(network: number) {
           {
             "chainId": `0x${chainId}`,
             "chainName": chain_.name,
-            "rpcUrls": [
-              chain_.rpcUrls.default
-            ],
+            "rpcUrls": 
+              chain_.rpcUrls.default.http,
             "nativeCurrency": {
               "name": chain_.nativeCurrency.name,
               "symbol": chain_.nativeCurrency.symbol,
@@ -56,44 +56,67 @@ export function resolveLink(
 }
 
 const resolveChain = (network: number) => {
-    // if(network === chain.hardhat.id) return chain.hardhat
-    // if(network === chain.sepolia.id) return chain.sepolia;
     if(network === base.id ) return base;
     if(network === linea.id) return linea;
-    if(network === polygonZk.id) return polygonZk;
     if(network === zkSyncEra.id) return zkSyncEra;
     if(network === zora.id) return zora;
-    if(network === polygonZkTestnet.id) return polygonZkTestnet;
     if(network === zkSyncEraTestnet.id) return zkSyncEraTestnet
     if(network === zoraGoerli.id) return zoraGoerli;
     if(network === lineaGoerli.id) return lineaGoerli;
-    if(network === baseGoerli.id) return baseGoerli;
+    // if(network === polygonZkEvmTestnet.id) return polygonZkEvmTestnet;
+    // if(network === baseGoerli.id) return baseGoerli;
+    if(network === polygonZkEvm.id) return (
+        {
+            id: 1101,
+            name: "Polygon zkEVM",
+            network: "polygon-zkevm",
+            nativeCurrency: {
+                name: "Ether",
+                symbol: "ETH",
+                decimals: 18,
+            },
+            rpcUrls: {
+                default: {
+                    http: ["https://zkevm-rpc.com"],
+                },
+                public: {
+                    http: ["https://zkevm-rpc.com"],
+                },
+            },
+            blockExplorers: {
+                default: {
+                    name: "PolygonScan",
+                    url: "https://zkevm.polygonscan.com",
+                },
+            },
+        }
+    );
 }
 
 const resolveTxLink = (
     network: number,
     txHash: string
 ) => {
-    if(network === chain.mainnet.id) 
+    if(network === mainnet.id) 
         return `https://etherscan.io/tx/${txHash}`;
-    if(network === chain.sepolia.id) 
+    if(network === sepolia.id) 
         return `https://sepolia.etherscan.io/tx/${txHash}`;
-    if(network === chain.arbitrum.id) 
+    if(network === arbitrum.id) 
         return `https://arbiscan.io/tx/${txHash}`;
-    if(network === chain.optimism.id) 
+    if(network === optimism.id) 
         return `https://optimistic.etherscan.io/tx/${txHash}`;
     if(network === base.id ) 
         return base.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === linea.id) 
         return linea.blockExplorers.default.url.concat(`/tx/${txHash}`);
-    if(network === polygonZk.id) 
-        return polygonZk.blockExplorers.default.url.concat(`/tx/${txHash}`);
+    if(network === polygonZkEvm.id) 
+        return polygonZkEvm.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === zkSyncEra.id)
         return zkSyncEra.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === zora.id)
         return zora.blockExplorers.default.url.concat(`/tx/${txHash}`);
-    if(network === polygonZkTestnet.id)
-        return polygonZkTestnet.blockExplorers.default.url.concat(`/tx/${txHash}`);
+    if(network === polygonZkEvmTestnet.id)
+        return polygonZkEvmTestnet.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === zkSyncEraTestnet.id) 
         return zkSyncEraTestnet.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === zoraGoerli.id) 
@@ -107,26 +130,26 @@ const resolveContractLink = (
     contractAddress: string
 ) : string | undefined=> {
 
-    if(network === chain.mainnet.id) 
+    if(network === mainnet.id) 
         return `https://etherscan.io/address/${contractAddress}`;
-    if(network === chain.sepolia.id) 
+    if(network === sepolia.id) 
         return `https://sepolia.etherscan.io/address/${contractAddress}`;
-    if(network === chain.arbitrum.id) 
+    if(network === arbitrum.id) 
         return `https://arbiscan.io/address/${contractAddress}`;
-    if(network === chain.optimism.id) 
+    if(network === optimism.id) 
         return `https://optimistic.etherscan.io/address/${contractAddress}`;
     if(network === base.id ) 
         return base.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === linea.id) 
         return linea.blockExplorers.default.url.concat(`/address/${contractAddress}`);
-    if(network === polygonZk.id) 
-        return polygonZk.blockExplorers.default.url.concat(`/address/${contractAddress}`);
+    if(network === polygonZkEvm.id) 
+        return polygonZkEvm.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === zkSyncEra.id) 
         return zkSyncEra.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === zora.id)
         return zora.blockExplorers.default.url.concat(`/address/${contractAddress}`);
-    if(network === polygonZkTestnet.id)
-        return polygonZkTestnet.blockExplorers.default.url.concat(`/address/${contractAddress}`);
+    if(network === polygonZkEvmTestnet.id)
+        return polygonZkEvmTestnet.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === zkSyncEraTestnet.id)
         return zkSyncEraTestnet.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === zoraGoerli.id) 

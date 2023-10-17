@@ -2,27 +2,39 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import * as React from 'react';
 import NextHead from 'next/head';
-import { chain, createClient, WagmiConfig, configureChains } from 'wagmi';
+import { createClient, WagmiConfig, configureChains } from 'wagmi';
+import { 
+  hardhat, mainnet, sepolia, arbitrum, optimism, polygonZkEvm, polygonZkEvmTestnet, baseGoerli
+} from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { 
-  base, linea, polygonZk, polygonZkTestnet, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, baseGoerli
+  base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
 } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
-import { darkTheme, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { darkTheme, getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { injectedWallet, metaMaskWallet} from '@rainbow-me/rainbowkit/wallets';
+import dotenv from 'dotenv';
+dotenv.config();
 
+const projectId = process.env.WALLET_CONNECT_ID?? "";
 
 const { chains, provider } = configureChains(
   [
-    chain.mainnet, chain.sepolia, chain.hardhat, chain.arbitrum, chain.optimism,
-    base, baseGoerli, linea, polygonZk, polygonZkTestnet, zkSyncEra, zkSyncEraTestnet, zora, zoraGoerli, lineaGoerli
+    mainnet, sepolia, hardhat, arbitrum, optimism, base, baseGoerli,
+    linea, polygonZkEvm, polygonZkEvmTestnet, zkSyncEra, zkSyncEraTestnet, zora, zoraGoerli, lineaGoerli
   ],
   [publicProvider()]
 );
 
-const { connectors } = getDefaultWallets({
-  appName: 'OneClick Deployer',
-  chains,
-});
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+      injectedWallet({ chains }),
+      metaMaskWallet({ chains, projectId })
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,
