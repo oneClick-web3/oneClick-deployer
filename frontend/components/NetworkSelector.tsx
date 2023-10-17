@@ -11,17 +11,17 @@ const testnet = `sepolia\n(testnet)`;
 
 
 const NetworkSelector = ({setNetwork} : {setNetwork: any}) => {
-    const { switchNetwork } = useSwitchNetwork();
+    const { switchNetworkAsync } = useSwitchNetwork();
 
     const handler = async(network: number) => {
-        if(switchNetwork) {
+        if(switchNetworkAsync) {
             try {
                 await addChain(network)       
             } catch (error) {
                 console.log(error);
                 return
             }
-            switchNetwork?.(network);
+            await switchNetworkAsync(network);
             setNetwork(true);
         } else console.log('Error: useSwitchNetwork error')
     }
