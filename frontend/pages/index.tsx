@@ -19,7 +19,7 @@ export default function Home() {
   const [txHash, setTxHash] = useState<string>();
   const [network, setNetwork] = useState<boolean>(false);
   // 
-  // const [newChain, setNewChain] = useState<number>();
+  const [newChain, setNewChain] = useState<number>();
   // const [renderer, setRenderer] = useState<boolean>(false);
   // 
   const [successAlert, setSuccessAlert] = useState<boolean>(false);
@@ -39,13 +39,10 @@ export default function Home() {
     }
   }
 
-  // useEffect(() => {
-  //   if(newChain){
-  //     if(chain?.id != newChain) switchNetwork?.(newChain);
-  //     // if(!isLoading) 
-  //      setNetwork(true);
-  //   }
-  // }, [newChain])
+  useEffect(() => {
+    if(newChain && newChain == chain?.id)
+     setNetwork(true);
+  }, [chain])
 
 
 
@@ -115,7 +112,7 @@ export default function Home() {
             </>
           ) : (
             <NetworkSelector setNetwork={setNetwork} 
-            // setNewChain={setNewChain}
+             setNewChain={setNewChain}
             />
           )
         ) : (
