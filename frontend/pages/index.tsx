@@ -42,6 +42,8 @@ export default function Home() {
   useEffect(() => {
     if(newChain && newChain == chain?.id)
      setNetwork(true);
+    if(newChain !== chain?.id)
+     setNetwork(false);
   }, [chain])
 
 

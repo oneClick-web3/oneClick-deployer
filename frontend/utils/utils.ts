@@ -9,6 +9,7 @@ import {
 export async function addChain(network: number) {
     if(network === hardhat.id) return;
     if(network === sepolia.id) return;
+    if(network === linea.id) return;
     const chain_ = resolveChain(network);
     if(!chain_)
      throw new Error('wrong network arg')
