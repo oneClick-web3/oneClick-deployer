@@ -1,7 +1,7 @@
 import React from "react";
 import { useSwitchNetwork, useAccount } from "wagmi";
 import {
-     base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
+     base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, scrollSepolia, scroll
 } from "@/network-config/network-config";
 import { sepolia, hardhat, polygonZkEvm, polygonZkEvmTestnet, baseGoerli } from "wagmi/chains";
 import { addChain } from "@/utils/utils";
@@ -30,13 +30,13 @@ const NetworkSelector = ({ setNetwork, setNewChain } : { setNetwork: any, setNew
     }
 
     return (
-        <div className="grid grid-rows-7">
+        <div className="grid grid-rows-8">
             <div className="pb-2 flex justify-center">
                 <h1 className="text-xl font-mono text-white">Select a Network</h1>
             </div>
                 <div 
                  className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
-                 onClick={() => handler(sepolia.id)}
+                 onClick={() => handler(baseGoerli.id)}
                 >
                         {testnet}
                 </div>
@@ -57,6 +57,12 @@ const NetworkSelector = ({ setNetwork, setNewChain } : { setNetwork: any, setNew
                  onClick={() => handler(polygonZkEvm.id)}
                 >
                         polygon zk
+                </div>
+                <div 
+                 className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
+                 onClick={() => handler(scroll.id)}
+                >
+                        scroll
                 </div>
                 <div 
                  className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-not-allowed hover:text-black hover:bg-red-400"

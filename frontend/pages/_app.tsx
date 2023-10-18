@@ -8,7 +8,7 @@ import {
 } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { 
-  base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
+  base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, scrollSepolia, scroll
 } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
 import { darkTheme, getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -20,7 +20,7 @@ const projectId = process.env.WALLET_CONNECT_ID?? "";
 
 const { chains, provider } = configureChains(
   [
-    mainnet, sepolia, hardhat, arbitrum, optimism, base, baseGoerli,
+    mainnet, sepolia, hardhat, arbitrum, optimism, base, baseGoerli, scrollSepolia, scroll,
     linea, polygonZkEvm, polygonZkEvmTestnet, zkSyncEra, zkSyncEraTestnet, zora, zoraGoerli, lineaGoerli
   ],
   [publicProvider()]

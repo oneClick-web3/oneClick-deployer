@@ -2,7 +2,7 @@ import {
     mainnet, sepolia, arbitrum, optimism, hardhat, baseGoerli, polygonZkEvm, polygonZkEvmTestnet
 } from 'wagmi/chains';
 import { 
-    logo, base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
+    logo, base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, scrollSepolia, scroll
 } from '@/network-config/network-config';
 
 
@@ -68,7 +68,37 @@ const resolveChain = (network: number) => {
     if(network === zkSyncEraTestnet.id) return zkSyncEraTestnet
     if(network === zoraGoerli.id) return zoraGoerli;
     if(network === lineaGoerli.id) return lineaGoerli;
-    // if(network === baseGoerli.id) return baseGoerli;
+    if(network === scrollSepolia.id) return scrollSepolia;
+    if(network === scroll.id) return scroll;
+    if(network === baseGoerli.id) return ({
+        id: 84531,
+        network: "base-goerli",
+        name: "Base Goerli",
+        nativeCurrency: {
+            name: "Base Goerli",
+            symbol: "ETH",
+            decimals: 18,
+        },
+        rpcUrls: {
+            default: {
+                http: ["https://goerli.base.org"],
+            },
+            public: {
+                http: ["https://goerli.base.org"],
+            },
+        },
+        blockExplorers: {
+            etherscan: {
+                name: "Basescan",
+                url: "https://goerli.basescan.org",
+            },
+            default: {
+                name: "Basescan",
+                url: "https://goerli.basescan.org",
+            },
+        },
+        testnet: true,
+    });
     if(network === polygonZkEvmTestnet.id) return ({
         id: 1442,
         name: "Polygon zkEVM Testnet",
@@ -152,6 +182,10 @@ const resolveTxLink = (
         return zoraGoerli.blockExplorers.default.url.concat(`/tx/${txHash}`);
     if(network === baseGoerli.id)
         return baseGoerli.blockExplorers.default.url.concat(`/tx/${txHash}`);
+    if(network === scrollSepolia.id)
+        return scrollSepolia.blockExplorers.default.url.concat(`/tx/${txHash}`);
+    if(network === scroll.id)
+        return scroll.blockExplorers.default.url.concat(`/tx/${txHash}`);
 }
 
 const resolveContractLink = (
@@ -185,4 +219,8 @@ const resolveContractLink = (
         return zoraGoerli.blockExplorers.default.url.concat(`/address/${contractAddress}`);
     if(network === baseGoerli.id)
         return baseGoerli.blockExplorers.default.url.concat(`/address/${contractAddress}`);
+    if(network === scrollSepolia.id)
+        return scrollSepolia.blockExplorers.default.url.concat(`/address/${contractAddress}`);
+    if(network === scroll.id)
+        return scroll.blockExplorers.default.url.concat(`/address/${contractAddress}`);
 }

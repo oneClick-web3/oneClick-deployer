@@ -19,7 +19,10 @@ export const logo: LogoUrl = {
   ], 
   59144: [
     "https://images.ctfassets.net/64upluvbiuck/3jYGu3XwBgiRxNPRbzEoyh/53cbb5c2fb09ac12bc073cd15385f625/logo-icon.svg"
-  ]
+  ],
+  // 534352: [
+  //   "https://pbs.twimg.com/profile_images/1696531511519150080/Fq5O0LeN_400x400.jpg"
+  // ]
 }
 
 
@@ -270,4 +273,54 @@ export const lineaGoerli = {
       url: 'https://goerli.lineascan.build/'}
   },
   testnet: true,   
+}
+
+export const scrollSepolia = {
+  id: 534351,
+  name: 'Scroll Sepolia',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Ether',
+    symbol: 'ETH',
+  },
+  network: 'scroll-sepolia',
+  rpcUrls: {
+    default: {
+      http: ['https://sepolia-rpc.scroll.io/']
+    },
+    public: {
+      http: ['https://sepolia-rpc.scroll.io/']
+    }
+  },
+  blockExplorers: {
+    default: {
+      name: 'Sepolia Scroll Scan',
+      url: 'https://sepolia.scrollscan.com/'}
+  },
+  testnet: true,   
+}
+
+export const scroll = {
+  id: 534352,
+  name: 'Scroll',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Ether',
+    symbol: 'ETH',
+  },
+  network: 'scroll',
+  rpcUrls: {
+    default: {
+      http: ['https://rpc.scroll.io/']
+    },
+    public: {
+      http: ['https://rpc.scroll.io/']
+    }
+  },
+  blockExplorers: {
+    default: {
+      name: 'Scroll Scan',
+      url: 'https://scrollscan.com/'}
+  },
+  testnet: false,
 }
