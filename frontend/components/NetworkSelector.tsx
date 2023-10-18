@@ -7,8 +7,8 @@ import { sepolia, hardhat, polygonZkEvm, polygonZkEvmTestnet, baseGoerli } from 
 import { addChain } from "@/utils/utils";
 
 // const hardhat = chain.hardhat.id;
-const testnet = `sepolia\n(testnet)`;
-
+// const testnet = `sepolia\n(testnet)`;
+const testnet = `base goerli(testnet)`
 
 const NetworkSelector = ({ setNetwork, setNewChain } : { setNetwork: any, setNewChain: any }) => {
     const { switchNetwork, error } = useSwitchNetwork();
@@ -62,7 +62,7 @@ const NetworkSelector = ({ setNetwork, setNewChain } : { setNetwork: any, setNew
                  className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-not-allowed hover:text-black hover:bg-red-400"
                 //  onClick={() => handler(zkSyncEraTestnet.id)}
                 >
-                        zkSync era (soon)
+                        zkSync era(soon)
                 </div>
                 <div 
                  className="p-4 m-2 md:p-2 md:m-1 sm:p-1 sm:m-0.5 flex justify-center border-4 rounded text-white font-mono font-bold border-white bg-black cursor-pointer hover:text-black hover:bg-green-400"
