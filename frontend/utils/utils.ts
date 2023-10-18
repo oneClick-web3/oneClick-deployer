@@ -2,10 +2,9 @@ import {
     mainnet, sepolia, arbitrum, optimism, hardhat, baseGoerli, polygonZkEvm, polygonZkEvmTestnet
 } from 'wagmi/chains';
 import { 
-    base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
+    logo, base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
 } from '@/network-config/network-config';
 
-const baselogo = 'https://go.wallet.coinbase.com/static/base-logo.png'
 
 export async function addChain(network: number) {
     if(network === hardhat.id) return;
@@ -34,7 +33,7 @@ export async function addChain(network: number) {
             "blockExplorerUrls": [
               chain_.blockExplorers.default.url
             ],
-            // "iconUrls": [baselogo]
+            "iconUrls": logo[network]
           }
         ]
       });

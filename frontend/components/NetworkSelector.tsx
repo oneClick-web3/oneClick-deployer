@@ -19,7 +19,6 @@ const NetworkSelector = ({ setNetwork, setNewChain } : { setNetwork: any, setNew
                 await addChain(network);
             } catch (error) {
                 console.log(error);
-                return
             }
             switchNetwork(network);
             console.log('switchError', error);

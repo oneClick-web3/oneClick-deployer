@@ -12,7 +12,7 @@ import {
 } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
 import { darkTheme, getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { injectedWallet, metaMaskWallet} from '@rainbow-me/rainbowkit/wallets';
+import { injectedWallet, metaMaskWallet, coinbaseWallet} from '@rainbow-me/rainbowkit/wallets';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -31,7 +31,8 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      metaMaskWallet({ chains, projectId })
+      metaMaskWallet({ chains, projectId }),
+      coinbaseWallet({ appName:'oneClick-deployer', chains })
     ],
   },
 ]);

@@ -1,4 +1,25 @@
 
+export interface LogoUrl {
+  [id: number]: string[];
+}
+
+export const logo: LogoUrl = {
+  8453: [
+    "https://go.wallet.coinbase.com/static/base-logo.png"
+  ],
+  7777777: [
+    "https://downloads.intercomcdn.com/i/o/423685/3ee9b2db9b1056f1b326c2fb/77e889c8af55be5cf4b25a1e1061689d.png"
+  ],
+  1101: [
+    "https://polygonscan.com/images/svg/brands/matic.svg",
+    "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/svg/color/matic.svg"    
+  ],
+  324: [
+    "https://uptime.com/media/statuspages/arrows_black.png"
+  ], 
+}
+
+
 export const base = {
     id: 8453,
     name: 'Base Mainnet',
