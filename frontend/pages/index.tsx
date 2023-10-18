@@ -40,7 +40,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if(newChain && newChain == chain?.id)
+    if(newChain && newChain === chain?.id)
      setNetwork(true);
     if(newChain !== chain?.id)
      setNetwork(false);
@@ -53,6 +53,8 @@ export default function Home() {
   // console.log('locked', locked);
   console.log('signer', signer)
   console.log('signer error', error);
+  console.log('newChain', newChain);
+  console.log('newChain=chain?', newChain === chain?.id)
 
   return (
     <>
