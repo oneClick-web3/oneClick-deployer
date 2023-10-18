@@ -6,10 +6,13 @@ import {
 } from '@/network-config/network-config';
 
 
-export async function addChain(network: number) {
+export async function addChain(network: number, isMetamask?: boolean) {
     if(network === hardhat.id) return;
     if(network === sepolia.id) return;
-    if(network === linea.id) return;
+    if(network === linea.id){
+        console.log('isMetamask', isMetamask);
+        if(isMetamask) return;
+    }
     const chain_ = resolveChain(network);
     if(!chain_)
      throw new Error('wrong network arg')

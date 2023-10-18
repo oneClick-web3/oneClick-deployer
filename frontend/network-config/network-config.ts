@@ -17,6 +17,9 @@ export const logo: LogoUrl = {
   324: [
     "https://uptime.com/media/statuspages/arrows_black.png"
   ], 
+  59144: [
+    "https://images.ctfassets.net/64upluvbiuck/3jYGu3XwBgiRxNPRbzEoyh/53cbb5c2fb09ac12bc073cd15385f625/logo-icon.svg"
+  ]
 }
 
 

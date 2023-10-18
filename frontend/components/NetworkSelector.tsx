@@ -1,5 +1,5 @@
 import React from "react";
-import { useSwitchNetwork } from "wagmi";
+import { useSwitchNetwork, useAccount } from "wagmi";
 import {
      base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli
 } from "@/network-config/network-config";
@@ -12,11 +12,13 @@ const testnet = `sepolia\n(testnet)`;
 
 const NetworkSelector = ({ setNetwork, setNewChain } : { setNetwork: any, setNewChain: any }) => {
     const { switchNetwork, error } = useSwitchNetwork();
+    const { connector } = useAccount();
+    // console.log('connector', connector);
 
     const handler = async(network: number) => {
         if(switchNetwork) {
             try {
-                await addChain(network);
+                await addChain(network, connector?.id === "metaMask");
             } catch (error) {
                 console.log(error);
             }

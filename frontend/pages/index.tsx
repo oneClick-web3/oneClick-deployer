@@ -44,7 +44,7 @@ export default function Home() {
      setNetwork(true);
     if(newChain !== chain?.id)
      setNetwork(false);
-  }, [chain])
+  }, [chain, newChain])
 
 
 
