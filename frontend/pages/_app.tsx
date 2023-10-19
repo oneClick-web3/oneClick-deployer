@@ -11,7 +11,7 @@ import {
   base, linea, zkSyncEraTestnet, zkSyncEra, zora, zoraGoerli, lineaGoerli, scrollSepolia, scroll
 } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
-import { darkTheme, getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { darkTheme, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { injectedWallet, metaMaskWallet, coinbaseWallet, walletConnectWallet} from '@rainbow-me/rainbowkit/wallets';
 
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID?? "";
