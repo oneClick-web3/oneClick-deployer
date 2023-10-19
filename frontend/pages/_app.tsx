@@ -12,11 +12,9 @@ import {
 } from '@/network-config/network-config';
 import '@rainbow-me/rainbowkit/styles.css';
 import { darkTheme, getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { injectedWallet, metaMaskWallet, coinbaseWallet} from '@rainbow-me/rainbowkit/wallets';
-import dotenv from 'dotenv';
-dotenv.config();
+import { injectedWallet, metaMaskWallet, coinbaseWallet, walletConnectWallet} from '@rainbow-me/rainbowkit/wallets';
 
-const projectId = process.env.WALLET_CONNECT_ID?? "";
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID?? "";
 
 const { chains, provider } = configureChains(
   [
@@ -32,7 +30,8 @@ const connectors = connectorsForWallets([
     wallets: [
       injectedWallet({ chains }),
       metaMaskWallet({ chains, projectId }),
-      coinbaseWallet({ appName:'oneClick-deployer', chains })
+      coinbaseWallet({ appName:'oneClick-deployer', chains }),
+      walletConnectWallet({ chains, projectId})
     ],
   },
 ]);
